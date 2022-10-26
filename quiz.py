@@ -577,11 +577,11 @@ def difficult():
         "on"
     ],
     [
-     "Which of the following is a Python tuple?",
-        "[1, 2, 3]",
-        "(1, 2, 3)",
-        "{1, 2, 3}",
-        "{}"   
+        "How can assertions be disabled in Python ?",
+        "Passing -O when running python",
+        "Assertions are disabled by default",
+        "Both 1 and 2 are wrong",
+        "Asserations cannot be disabled in python",
     ],
     [
         "What is returned by math.ceil(3.4)?",
@@ -602,7 +602,7 @@ def difficult():
     answer = [
             "None of the mentioned",
             "in",
-            "(1,2,3)",
+            "Passing -O when running python",
             "4",
             "error"
             ]
@@ -739,7 +739,7 @@ def start():
     canvas.create_image(0,0,image=img,anchor=NW)
 
     button = Button(root, text='Start',command = signUpPage,bg="#413e65",fg="white") 
-    button.configure(width = 79,height=1, activebackground = "#45818e", relief = RAISED,font= ('bold'))
+    button.configure(width = 65,height=1, activebackground = "#45818e", relief = RAISED,font= ('bold'))
     button.grid(column = 0 , row = 2)
     
 
