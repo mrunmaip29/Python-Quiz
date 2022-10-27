@@ -234,10 +234,12 @@ def easy():
     e = Tk()
     e.title('Quiz App - Easy Level')
     
-    easy_canvas = Canvas(e,width=720,height=440,bg="orange")
+    easy_canvas = Canvas(e,width=720,height=403)
+    img = PhotoImage(file="questbg.png")
+    easy_canvas.create_image(0,0,image=img,anchor=NW)
     easy_canvas.pack()
 
-    easy_frame = Frame(easy_canvas,bg="#BADA55")
+    easy_frame = Frame(easy_canvas,bg="#45818e")
     easy_frame.place(relwidth=0.8,relheight=0.8,relx=0.1,rely=0.1)
 
     
@@ -307,21 +309,21 @@ def easy():
     li = ['',0,1,2,3,4]
     x = random.choice(li[1:])
     
-    ques = Label(easy_frame,text =easyQ[x][0],font="calibri 12",bg="orange")
+    ques = Label(easy_frame,text =easyQ[x][0],font="calibri 12",bg="#45818e")
     ques.place(relx=0.5,rely=0.2,anchor=CENTER)
 
     var = StringVar()
     
-    a = Radiobutton(easy_frame,text=easyQ[x][1],font="calibri 10",value=easyQ[x][1],variable = var,bg="#BADA55")
+    a = Radiobutton(easy_frame,text=easyQ[x][1],font="calibri 10",value=easyQ[x][1],variable = var,bg="#45818e")
     a.place(relx=0.5,rely=0.42,anchor=CENTER)
 
-    b = Radiobutton(easy_frame,text=easyQ[x][2],font="calibri 10",value=easyQ[x][2],variable = var,bg="#BADA55")
+    b = Radiobutton(easy_frame,text=easyQ[x][2],font="calibri 10",value=easyQ[x][2],variable = var,bg="#45818e")
     b.place(relx=0.5,rely=0.52,anchor=CENTER)
 
-    c = Radiobutton(easy_frame,text=easyQ[x][3],font="calibri 10",value=easyQ[x][3],variable = var,bg="#BADA55")
+    c = Radiobutton(easy_frame,text=easyQ[x][3],font="calibri 10",value=easyQ[x][3],variable = var,bg="#45818e")
     c.place(relx=0.5,rely=0.62,anchor=CENTER) 
 
-    d = Radiobutton(easy_frame,text=easyQ[x][4],font="calibri 10",value=easyQ[x][4],variable = var,bg="#BADA55")
+    d = Radiobutton(easy_frame,text=easyQ[x][4],font="calibri 10",value=easyQ[x][4],variable = var,bg="#45818e")
     d.place(relx=0.5,rely=0.72,anchor=CENTER) 
     
     li.remove(x)
@@ -363,10 +365,10 @@ def easy():
             score+=1
         display()
     
-    submit = Button(easy_frame,command=calc,text="Submit", fg="white", bg="black")
+    submit = Button(easy_frame,command=calc,text="Submit", bg="#413e65",fg="white")
     submit.place(relx=0.5,rely=0.82,anchor=CENTER)
     
-    nextQuestion = Button(easy_frame,command=display,text="Next", fg="white", bg="black")
+    nextQuestion = Button(easy_frame,command=display,text="Next", bg="#413e65",fg="white")
     nextQuestion.place(relx=0.87,rely=0.82,anchor=CENTER)
     
    # pre=Button(easy_frame,command=display, text="Previous", fg="white", bg="black")
@@ -384,10 +386,12 @@ def medium():
     m = Tk()
     m.title('Quiz App - Medium Level')
     
-    med_canvas = Canvas(m,width=720,height=440,bg="#101357")
+    med_canvas = Canvas(m,width=720,height=403)
+    img = PhotoImage(file="questbg.png")
+    med_canvas.create_image(0,0,image=img,anchor=NW)
     med_canvas.pack()
 
-    med_frame = Frame(med_canvas,bg="#A1A100")
+    med_frame = Frame(med_canvas,bg="#45818e")
     med_frame.place(relwidth=0.8,relheight=0.8,relx=0.1,rely=0.1)
 
     
@@ -458,21 +462,21 @@ def medium():
     li = ['',0,1,2,3,4]
     x = random.choice(li[1:])
     
-    ques = Label(med_frame,text =mediumQ[x][0],font="calibri 12",bg="#B26500")
+    ques = Label(med_frame,text =mediumQ[x][0],font="calibri 12",bg="#45818e")
     ques.place(relx=0.5,rely=0.2,anchor=CENTER)
 
     var = StringVar()
     
-    a = Radiobutton(med_frame,text=mediumQ[x][1],font="calibri 10",value=mediumQ[x][1],variable = var,bg="#A1A100")
+    a = Radiobutton(med_frame,text=mediumQ[x][1],font="calibri 10",value=mediumQ[x][1],variable = var,bg="#45818e")
     a.place(relx=0.5,rely=0.42,anchor=CENTER)
 
-    b = Radiobutton(med_frame,text=mediumQ[x][2],font="calibri 10",value=mediumQ[x][2],variable = var,bg="#A1A100")
+    b = Radiobutton(med_frame,text=mediumQ[x][2],font="calibri 10",value=mediumQ[x][2],variable = var,bg="#45818e")
     b.place(relx=0.5,rely=0.52,anchor=CENTER)
 
-    c = Radiobutton(med_frame,text=mediumQ[x][3],font="calibri 10",value=mediumQ[x][3],variable = var,bg="#A1A100")
+    c = Radiobutton(med_frame,text=mediumQ[x][3],font="calibri 10",value=mediumQ[x][3],variable = var,bg="#45818e")
     c.place(relx=0.5,rely=0.62,anchor=CENTER) 
 
-    d = Radiobutton(med_frame,text=mediumQ[x][4],font="calibri 10",value=mediumQ[x][4],variable = var,bg="#A1A100")
+    d = Radiobutton(med_frame,text=mediumQ[x][4],font="calibri 10",value=mediumQ[x][4],variable = var,bg="#45818e")
     d.place(relx=0.5,rely=0.72,anchor=CENTER) 
     
     li.remove(x)
@@ -514,10 +518,10 @@ def medium():
             score+=1
         display()
     
-    submit = Button(med_frame,command=calc,text="Submit", fg="white", bg="black")
+    submit = Button(med_frame,command=calc,text="Submit", fg="white", bg="#413e65")
     submit.place(relx=0.5,rely=0.82,anchor=CENTER)
     
-    nextQuestion = Button(med_frame,command=display,text="Next", fg="white", bg="black")
+    nextQuestion = Button(med_frame,command=display,text="Next", fg="white", bg="#413e65")
     nextQuestion.place(relx=0.87,rely=0.82,anchor=CENTER)
     
    # pre=Button(med_frame,command=display, text="Previous", fg="white", bg="black")
@@ -535,10 +539,12 @@ def difficult():
     h = Tk()
     h.title('Quiz App - Hard Level')
     
-    hard_canvas = Canvas(h,width=720,height=440,bg="#101357")
+    hard_canvas = Canvas(h,width=720,height=403)
+    img = PhotoImage(file="questbg.png")
+    hard_canvas.create_image(0,0,image=img,anchor=NW)
     hard_canvas.pack()
 
-    hard_frame = Frame(hard_canvas,bg="#008080")
+    hard_frame = Frame(hard_canvas,bg="#45818e")
     hard_frame.place(relwidth=0.8,relheight=0.8,relx=0.1,rely=0.1)
 
     
@@ -610,21 +616,21 @@ def difficult():
     li = ['',0,1,2,3,4]
     x = random.choice(li[1:])
     
-    ques = Label(hard_frame,text =hardQ[x][0],font="calibri 12",bg="#A0DB8E")
+    ques = Label(hard_frame,text =hardQ[x][0],font="calibri 12",bg="#45818e")
     ques.place(relx=0.5,rely=0.2,anchor=CENTER)
 
     var = StringVar()
     
-    a = Radiobutton(hard_frame,text=hardQ[x][1],font="calibri 10",value=hardQ[x][1],variable = var,bg="#008080",fg="white")
+    a = Radiobutton(hard_frame,text=hardQ[x][1],font="calibri 10",value=hardQ[x][1],variable = var,bg="#45818e")
     a.place(relx=0.5,rely=0.42,anchor=CENTER)
 
-    b = Radiobutton(hard_frame,text=hardQ[x][2],font="calibri 10",value=hardQ[x][2],variable = var,bg="#008080",fg="white")
+    b = Radiobutton(hard_frame,text=hardQ[x][2],font="calibri 10",value=hardQ[x][2],variable = var,bg="#45818e")
     b.place(relx=0.5,rely=0.52,anchor=CENTER)
 
-    c = Radiobutton(hard_frame,text=hardQ[x][3],font="calibri 10",value=hardQ[x][3],variable = var,bg="#008080",fg="white")
+    c = Radiobutton(hard_frame,text=hardQ[x][3],font="calibri 10",value=hardQ[x][3],variable = var,bg="#45818e")
     c.place(relx=0.5,rely=0.62,anchor=CENTER) 
 
-    d = Radiobutton(hard_frame,text=hardQ[x][4],font="calibri 10",value=hardQ[x][4],variable = var,bg="#008080",fg="white")
+    d = Radiobutton(hard_frame,text=hardQ[x][4],font="calibri 10",value=hardQ[x][4],variable = var,bg="#45818e")
     d.place(relx=0.5,rely=0.72,anchor=CENTER) 
     
     li.remove(x)
@@ -671,10 +677,10 @@ def difficult():
     #    h.destroy()
      #   showMark()
     
-    submit = Button(hard_frame,command=calc,text="Submit", fg="white", bg="black")
+    submit = Button(hard_frame,command=calc,text="Submit", fg="white", bg="#413e65")
     submit.place(relx=0.5,rely=0.82,anchor=CENTER)
     
-    nextQuestion = Button(hard_frame,command=display,text="Next", fg="white", bg="black")
+    nextQuestion = Button(hard_frame,command=display,text="Next", fg="white", bg="#413e65")
     nextQuestion.place(relx=0.87,rely=0.82,anchor=CENTER)
     
     #pre=Button(hard_frame,command=display, text="Previous", fg="white", bg="black")
@@ -733,9 +739,9 @@ def start():
     global root 
     root = Tk()
     root.title('Welcome To Quiz App')
-    canvas = Canvas(root,width = 720,height = 440, bg = 'yellow')
+    canvas = Canvas(root,width = 590,height = 440, bg = 'yellow')
     canvas.grid(column = 0 , row = 1)
-    img = PhotoImage(file="home2.png")
+    img = PhotoImage(file="home3.png")
     canvas.create_image(0,0,image=img,anchor=NW)
 
     button = Button(root, text='Start',command = signUpPage,bg="#413e65",fg="white") 
