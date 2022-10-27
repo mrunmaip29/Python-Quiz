@@ -177,7 +177,7 @@ def menu(abcdefgh):
     
     
     menu_canvas = Canvas(menu,width=720,height=403)
-    img = PhotoImage(file="questbg.png")
+    img = PhotoImage(file="images\questbg.png")
     menu_canvas.create_image(0,0,image=img,anchor=NW)
     menu_canvas.pack()
 
@@ -235,7 +235,7 @@ def easy():
     e.title('Quiz App - Easy Level')
     
     easy_canvas = Canvas(e,width=720,height=403)
-    img = PhotoImage(file="questbg.png")
+    img = PhotoImage(file="images\questbg.png")
     easy_canvas.create_image(0,0,image=img,anchor=NW)
     easy_canvas.pack()
 
@@ -387,7 +387,7 @@ def medium():
     m.title('Quiz App - Medium Level')
     
     med_canvas = Canvas(m,width=720,height=403)
-    img = PhotoImage(file="questbg.png")
+    img = PhotoImage(file="images\questbg.png")
     med_canvas.create_image(0,0,image=img,anchor=NW)
     med_canvas.pack()
 
@@ -540,7 +540,7 @@ def difficult():
     h.title('Quiz App - Hard Level')
     
     hard_canvas = Canvas(h,width=720,height=403)
-    img = PhotoImage(file="questbg.png")
+    img = PhotoImage(file="images\questbg.png")
     hard_canvas.create_image(0,0,image=img,anchor=NW)
     hard_canvas.pack()
 
@@ -741,7 +741,7 @@ def start():
     root.title('Welcome To Quiz App')
     canvas = Canvas(root,width = 590,height = 440, bg = 'yellow')
     canvas.grid(column = 0 , row = 1)
-    img = PhotoImage(file="home3.png")
+    img = PhotoImage(file="images\home3.png")
     canvas.create_image(0,0,image=img,anchor=NW)
 
     button = Button(root, text='Start',command = signUpPage,bg="#413e65",fg="white") 
