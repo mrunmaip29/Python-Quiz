@@ -228,6 +228,9 @@ def menu(abcdefgh):
     letsgo = Button(menu_frame,text="Let's Go",bg="#413e65",fg="white",font="calibri 12",command=navigate)
     letsgo.place(relx=0.25,rely=0.82)
     menu.mainloop()
+
+
+
 def easy():
     
     global e
