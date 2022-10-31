@@ -266,26 +266,26 @@ def easy():
     
     easyQ = [
                  [
-                     "What will be the output of the following Python code? \nl=[1, 0, 2, 0, 'hello', '', []] \nlist(filter(bool, nl))",
-                     "[1, 0, 2, ‘hello’, '', []]",
-                     "Error",
-                     "[1, 2, ‘hello’]",
-                     "[1, 0, 2, 0, ‘hello’, '', []]" 
+                     "What will be the output of the following code snippet? 1.) print(type(5 / 2)) 2.) print(type(5 // 2))",
+                     "float and int",
+                     "int and float",
+                     "float and float",
+                     "int and int" 
                  ] ,
                  [
-                     "What will be the output of the following Python expression if the value of x is 34? \nprint(“%f”%x)" ,
-                    "34.00",
-                    "34.000000",
-                    "34.0000",
-                    "34.00000000"
+                     "Which of the following concepts is not a part of Python?" ,
+                    "Dynamic typing",
+                    "Loops",
+                    "Pointer",
+                    "All of the above"
                      
                  ],
                 [
-                    "What will be the value of X in the following Python expression? \nX = 2+9*((3*12)-8)/10" ,
-                    "30.8",
-                    "27.2",
-                    "28.4",
-                    "30.0"
+                    "How is a code block indicated in a Python" ,
+                    "Brackets",
+                    "Indentation",
+                    "Key",
+                    "None of the above"
                 ],
                 [
                     "Which of these in not a core data type?" ,
@@ -303,9 +303,9 @@ def easy():
                 ]
             ]
     answer = [
-                "[1, 2, ‘hello’]",
-                "34.000000",
-                "27.2",
+                "float and int",
+                "Pointer",
+                "Indentation",
                 "Class",
                 "^"
              ]
