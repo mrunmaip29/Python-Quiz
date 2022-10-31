@@ -266,11 +266,12 @@ def easy():
     
     easyQ = [
                  [
-                     "What will be the output of the following code snippet? 1.) print(type(5 / 2)) 2.) print(type(5 // 2))",
-                     "float and int",
-                     "int and float",
-                     "float and float",
-                     "int and int" 
+                     "What will be the output of the following code snippet?" 
+                     "1.) print(type(5 / 2))",
+                     "float",
+                     "int",
+                     "char",
+                     "double" 
                  ] ,
                  [
                      "Which of the following concepts is not a part of Python?" ,
@@ -303,7 +304,7 @@ def easy():
                 ]
             ]
     answer = [
-                "float and int",
+                "float",
                 "Pointer",
                 "Indentation",
                 "Class",
