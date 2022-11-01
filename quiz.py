@@ -2,8 +2,10 @@ import tkinter as tk
 from tkinter import *
 import tkinter.font as font
 import random
-import sqlite3 
-import time
+import sqlite3   #for datastorage
+import time      #interval of time for question
+import re        #regular expression for password validation
+from tkinter import messagebox
 
 def loginPage(logdata):
     sup.destroy()
@@ -63,7 +65,7 @@ def signUpPage():
     sup = Tk()
     sup.title('Quiz App')
     
-    fname = StringVar()
+    fname = StringVar() 
     uname = StringVar()
     passW = StringVar()
     country = StringVar()
@@ -97,7 +99,7 @@ def signUpPage():
     #password
     plabel = Label(sup_frame,text="Password  :",fg='black', bg='#45818e')
     plabel.place(relx=0.19,rely=0.6)
-    pas = Entry(sup_frame,bg='white',fg='black',textvariable = passW,show="*")
+    pas = Entry(sup_frame,bg='white',fg='black',textvariable = passW,show="*") #show "*" hides the password
     pas.config(width=42)
     pas.place(relx=0.31,rely=0.6)
     
@@ -109,46 +111,64 @@ def signUpPage():
     c = Entry(sup_frame,bg='white',fg='black',textvariable = country)
     c.config(width=42)
     c.place(relx=0.31,rely=0.7)
+
+    
     def addUserToDataBase():
         
         fullname = fname.get()
         username = user.get()
         password = pas.get()
-        country = c.get()
+        country =  c.get()
+        special_symbols =['$', '@', '#', '%']
         
         if len(fname.get())==0 and len(user.get())==0 and len(pas.get())==0 and len(c.get())==0:
-            error = Label(text="You haven't enter any field...Please Enter all the fields",fg='black',bg='white')
-            error.place(relx=0.37,rely=0.7)
+            #error = Label(text="You haven't enter any field...Please Enter all the fields",fg='black',bg='white')
+            #error.place(relx=0.37,rely=0.7)
+            messagebox.showerror('Form validation','Please Enter all the fields')
             
         elif len(fname.get())==0 or len(user.get())==0 or len(pas.get())==0 or len(c.get())==0:
-            error = Label(text="Please Enter all the fields",fg='black',bg='white')
-            error.place(relx=0.37,rely=0.7)
+            messagebox.showerror('Form validation','Please Enter all the fields')
             
         elif len(user.get()) == 0 and len(pas.get()) == 0:
-            error = Label(text="Username and password can't be empty",fg='black',bg='white')
-            error.place(relx=0.37,rely=0.7)
+            messagebox.showerror('Form validation','username and password cant be empty')
 
         elif len(user.get()) == 0 and len(pas.get()) != 0 :
-            error = Label(text="Username can't be empty",fg='black',bg='white')
-            error.place(relx=0.37,rely=0.7)
+            messagebox.showerror('Form validation','username cant be empty')
     
         elif len(user.get()) != 0 and len(pas.get()) == 0:
-            error = Label(text="Password can't be empty",fg='black',bg='white')
-            error.place(relx=0.37,rely=0.7)
+           messagebox.showerror('Password validation','Password cant be empty') 
+        
+        elif len(pas.get()) < 8:
+            messagebox.showerror('Password validation','Password must have atleast 8 charachters') 
+
+        elif re.search('[0-9]',password) is None:
+            messagebox.showerror('Password validation','No digits in password') 
+
+        elif re.search('[A-Z]',password) is None: 
+            messagebox.showerror('Password validation','No uppercase in password')
+        elif not any(characters in special_symbols for characters in password): 
+            messagebox.showerror('Password validation','Password should have at least one of the symbols $@#%')
         
         else:
         
             conn = sqlite3.connect('quiz.db')
-            create = conn.cursor()
+            create = conn.cursor() #instance using which you can invoke methods that execute SQLite statements, fetch data from the result sets of the queries.
             create.execute('CREATE TABLE IF NOT EXISTS userSignUp(FULLNAME text, USERNAME text,PASSWORD text,COUNTRY text)')
-            create.execute("INSERT INTO userSignUp VALUES (?,?,?,?)",(fullname,username,password,country)) 
-            conn.commit()
             create.execute('SELECT * FROM userSignUp')
-            z=create.fetchall()
-            print(z)
-            #L2.config(text="Username is "+z[0][0]+"\nPassword is "+z[-1][1])
-            conn.close()
-            loginPage(z)
+            omm=create.fetchall()
+            for a,un,pd,d in omm:
+                if un == uname.get():
+                    messagebox.showerror('Form validation','Username already exists, pls enter another username') 
+                    break
+            else:
+                create.execute("INSERT INTO userSignUp VALUES (?,?,?,?)",(fullname,username,password,country)) 
+                conn.commit()
+                create.execute('SELECT * FROM userSignUp')
+                z=create.fetchall()
+                print(z)
+                #L2.config(text="Username is "+z[0][0]+"\nPassword is "+z[-1][1])
+                conn.close()
+                loginPage(z)
         
     def gotoLogin():
         conn = sqlite3.connect('quiz.db')
@@ -724,7 +744,7 @@ def showMark(mark):
     import numpy as np
 
     fig = Figure(figsize=(5, 4), dpi=100)
-    labels = 'Marks Obtained','Total Marks'
+    labels = 'Marks Obtained','Failed'
     sizes = [int(mark),5-int(mark)]
     explode = (0.1,0)
     fig.add_subplot(111).pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',shadow=True, startangle=0)
@@ -740,20 +760,19 @@ def showMark(mark):
     sh.mainloop()
 
 def start():
-    global root 
-    root = Tk()
+    global root  #create it as global as we have to use it in another functions
+    root = Tk()  #initializing the tk
     root.title('Welcome To Quiz App')
     canvas = Canvas(root,width = 590,height = 440, bg = 'yellow')
     canvas.grid(column = 0 , row = 1)
     img = PhotoImage(file="images\home3.png")
-    canvas.create_image(0,0,image=img,anchor=NW)
+    canvas.create_image(0,0,image=img,anchor=NW) #nw means north west i.e starting from left top corner
 
     button = Button(root, text='Start',command = signUpPage,bg="#413e65",fg="white") 
-    button.configure(width = 65,height=1, activebackground = "#45818e", relief = RAISED,font= ('bold'))
+    button.configure(width = 65,height=1, activebackground = "#45818e", relief = RAISED,font= ('bold')) #flat, rased, sunken
     button.grid(column = 0 , row = 2)
     
-
-    root.mainloop()
+    root.mainloop() #responsible for executing the script and displaying the output window. 
     
     
 if __name__=='__main__':
